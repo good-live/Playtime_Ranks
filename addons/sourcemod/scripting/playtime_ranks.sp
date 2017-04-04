@@ -183,19 +183,19 @@ public int Native_GetClientTag(Handle plugin, int numParams){
 	
 	int client = GetNativeCell(1);
 	
-	int len;
-	GetNativeStringLength(2, len);
+	int maxlen;
+	GetNativeStringLength(3, maxlen);
 	
-	if (len <= 0)
+	if (maxlen <= 0)
 		return false;
 	
 	if(g_iRank[client] < 0)
 		return false;
 		
-	char[] str = new char[len + 1];
-	g_aTag.GetString(g_iRank[client], str, len+1);
+	char str[MAX_TAG_LENGTH];
+	g_aTag.GetString(g_iRank[client], str, sizeof(str));
 	
-	SetNativeString(1, str, len+1, false);
+	SetNativeString(1, str, maxlen, false);
 	return true;
 }
 
