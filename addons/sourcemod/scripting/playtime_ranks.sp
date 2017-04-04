@@ -183,8 +183,7 @@ public int Native_GetClientTag(Handle plugin, int numParams){
 	
 	int client = GetNativeCell(1);
 	
-	int maxlen;
-	GetNativeStringLength(3, maxlen);
+	int maxlen = GetNativeCell(3);
 	
 	if (maxlen <= 0)
 		return false;
